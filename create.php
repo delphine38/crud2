@@ -1,13 +1,17 @@
 <?php
+//*2
 include("bd.php");
+//include("showusers.php");
 
-//1er
+//3
 //if(isset($_POST['validate'])){
  //   echo "bravo";
 //}
 
 
-//2 tout le bloc Avec BDD ouverte !!!!
+
+
+//4 tout le bloc Avec BDD OUVERTE !!!! Ensuite dans showusers.php
 if(isset($_POST['validate'])){
         if(!empty($_POST['username'])AND !empty($_POST['email'])){
         
@@ -17,9 +21,9 @@ if(isset($_POST['validate'])){
             $insertUserInBDD = $bdd->prepare('INSERT INTO users(username, email) VALUES(?,?)');
          $insertUserInBDD->execute(array($username,$email ));
 
-         //3 données envoyés,remplace par header
-       // $succesMsg = "Les données ont bien été enregistrer en BDD";
-       //4 est dans SHOWUSERS
+         // données envoyés,remplace par header
+       $succesMsg = "Les données ont bien été enregistrer en BDD";
+       //est dans SHOWUSERS
        header('location:showusers.php');
     }else{
         $errorMsg = "Merci de compléter tout les champs";
@@ -46,6 +50,8 @@ if(isset($_POST['validate'])){
         }
         
         ?>
+        <div class="container">
+        <h1>Créer un utilisateur</h1>
     <form class="container" action="" method="post">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">NOM</label>
@@ -62,6 +68,7 @@ if(isset($_POST['validate'])){
 
 
     </form>
+    </div>
     
 </body>
 </html>
